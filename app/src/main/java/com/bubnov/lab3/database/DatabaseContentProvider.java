@@ -1,10 +1,10 @@
-/*
 // AddressBookContentProvider.java
 // Субкласс ContentProvider для работы с базой данных приложения
 package com.bubnov.lab3.database;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -41,6 +41,10 @@ public class DatabaseContentProvider extends ContentProvider {
         // Создание объекта DatabaseHelper
         dbHelper = new DatabaseHelper(getContext());
         return true; // Объект ContentProvider создан успешно
+    }
+
+    public void todo(Context context) {
+        dbHelper = new DatabaseHelper(context);
     }
 
     // Обязательный метод: здесь не используется, возвращаем null
@@ -163,4 +167,4 @@ public class DatabaseContentProvider extends ContentProvider {
 
         return numberOfRowsDeleted;
     }
-}*/
+}

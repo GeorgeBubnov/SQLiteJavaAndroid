@@ -7,8 +7,10 @@ import androidx.core.app.NotificationManagerCompat;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.bubnov.lab3.database.DatabaseContentProvider;
 import com.bubnov.lab3.database.DatabaseDescription.*;
 import com.bubnov.lab3.database.DatabaseHelper;
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     Button buttonAdd;
     private DatabaseHelper helper;
+    private DatabaseContentProvider provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +44,8 @@ public class MainActivity extends AppCompatActivity {
         buttonAdd = findViewById(R.id.buttonAdd);
 
         helper = new DatabaseHelper(this);
-
-        arr.add("s");
-
-
-
-        /*String[] strings = new String[4];
-        strings[0] = Student.COLUMN_LASTNAME;
-        strings[1] = Student.COLUMN_FIRSTNAME;
-        strings[2] = Student.COLUMN_MIDDLENAME;
-        strings[3] = Student.COLUMN_AVERAGE;*/
-
-        /*DatabaseContentProvider db = new DatabaseContentProvider();
-        db.onCreate();
-        db.hel
-        SQLiteDatabase db = getBaseContext().openOrCreateDatabase(, MODE_PRIVATE, null);*/
-
-
-        //Cursor cur = db.query(Student.CONTENT_URI,strings,null,null,null);
-        //cursor.getString(cursor.getColumnIndex(Student.COLUMN_NAME));
-        //arr.add(cur.getColumnName(1));
+        provider = new DatabaseContentProvider();
+        provider.todo(this);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,17 +53,13 @@ public class MainActivity extends AppCompatActivity {
                 /*Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 startActivity(intent);*/
 
-                /*DatabaseContentProvider dbcont = new DatabaseContentProvider();
-                // Создайте новую строку со значениями для вставки.
-                ContentValues newValues = new ContentValues();
-                // Задайте значения для каждой строки.
-                newValues.put(Student.COLUMN_LASTNAME, "Bubnov");
-                //[ ... Повторите для каждого столбца ... ]
-                // Вставьте строку в вашу базу данных.
-                dbcont.insert(Student.CONTENT_URI, newValues);
-                //dbcont.insert(DATABASE_TABLE, null, newValues);*/
+                ContentValues values = new ContentValues();
+                values.put(Student.COLUMN_LASTNAME, "Криничный");
+                values.put(Student.COLUMN_FIRSTNAME, "Игорь");
+                values.put(Student.COLUMN_MIDDLENAME, "Андреевич");
+                values.put(Student.COLUMN_AVERAGE, "88");
 
-
+                provider.insert(Student.CONTENT_URI,values);
             }
         });
     }
@@ -102,11 +84,13 @@ public class MainActivity extends AppCompatActivity {
             }
             notificationManager.notify(NOTIFICATION_ID, builder.build());
         }
-        insertStudent();
+
+        //insertStudent();
+        //updateStudent();
+        //deleteStudent();
+        arr = new ArrayList<String>();
         displayDatabaseInfo();
     }
-
-
 
     private void displayDatabaseInfo() {
         // Создадим и откроем для чтения базу данных
@@ -168,13 +152,9 @@ public class MainActivity extends AppCompatActivity {
             cursor.close();
         }
     }
-
     private void insertStudent() {
-
-        // Gets the database in write mode
         SQLiteDatabase db = helper.getWritableDatabase();
-        // Создаем объект ContentValues, где имена столбцов ключи,
-        // а информация о студенте является значениями ключей
+
         ContentValues values = new ContentValues();
         values.put(Student.COLUMN_LASTNAME, "Бубнов");
         values.put(Student.COLUMN_FIRSTNAME, "Георгий");
@@ -182,5 +162,23 @@ public class MainActivity extends AppCompatActivity {
         values.put(Student.COLUMN_AVERAGE, "99");
 
         long newRowId = db.insert(Student.TABLE_NAME, null, values);
+    }
+    private void updateStudent(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Student.COLUMN_LASTNAME, "Криничный");
+
+        db.update(Student.TABLE_NAME,
+                values,
+                Student.COLUMN_LASTNAME + "= ?",
+                new String[]{"Бубнов123"});
+    }
+    private void deleteStudent(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        db.delete(Student.TABLE_NAME,
+                Student.COLUMN_LASTNAME + "= ?",
+                new String[]{"Криничный"});
     }
 }
