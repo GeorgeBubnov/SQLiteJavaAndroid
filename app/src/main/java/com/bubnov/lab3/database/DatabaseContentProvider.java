@@ -78,7 +78,7 @@ public class DatabaseContentProvider extends ContentProvider {
                 projection, selection, selectionArgs, null, null, sortOrder);
 
         // Настройка отслеживания изменений в контенте
-        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        //cursor.setNotificationUri(getContext().getContentResolver(), uri);
         return cursor;
     }
 
@@ -98,8 +98,6 @@ public class DatabaseContentProvider extends ContentProvider {
                 if (rowId > 0) { // SQLite row IDs start at 1
                     newStudentUri = Student.buildContactUri(rowId);
 
-                    // Оповестить наблюдателей об изменениях в базе данных
-                    getContext().getContentResolver().notifyChange(uri, null);
                 } else
                     throw new SQLException(
                             getContext().getString(R.string.insert_failed) + uri);

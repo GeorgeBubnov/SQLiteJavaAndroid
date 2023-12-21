@@ -27,13 +27,12 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     public static ArrayList<String> arr = new ArrayList<String>();
     public static String last = "";
-    public static ArrayList<String> projection = new ArrayList<String>();//{""}
     public static int NOTIFICATION_ID = 101;
     public static String CHANNEL_ID = "channelID";
     ListView listView;
     Button buttonAdd;
     private DatabaseHelper helper;
-    private DatabaseContentProvider provider;
+    public static DatabaseContentProvider provider = new DatabaseContentProvider();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +43,13 @@ public class MainActivity extends AppCompatActivity {
         buttonAdd = findViewById(R.id.buttonAdd);
 
         helper = new DatabaseHelper(this);
-        provider = new DatabaseContentProvider();
         provider.todo(this);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);*/
-
-                ContentValues values = new ContentValues();
-                values.put(Student.COLUMN_LASTNAME, "Криничный");
-                values.put(Student.COLUMN_FIRSTNAME, "Игорь");
-                values.put(Student.COLUMN_MIDDLENAME, "Андреевич");
-                values.put(Student.COLUMN_AVERAGE, "88");
-
-                provider.insert(Student.CONTENT_URI,values);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -67,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        arr = new ArrayList<String>();
+        displayDatabaseInfo();
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);
         listView.setAdapter(adapter);
         if (!arr.isEmpty()) {
@@ -88,8 +80,7 @@ public class MainActivity extends AppCompatActivity {
         //insertStudent();
         //updateStudent();
         //deleteStudent();
-        arr = new ArrayList<String>();
-        displayDatabaseInfo();
+
     }
 
     private void displayDatabaseInfo() {
@@ -106,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // Делаем запрос
-        Cursor cursor = db.query(
+        /*Cursor cursor = db.query(
                 Student.TABLE_NAME,    // таблица
                 projection,            // столбцы
                 null,                  // столбцы для условия WHERE
@@ -114,7 +105,9 @@ public class MainActivity extends AppCompatActivity {
                 null,                  // Don't group the rows
                 null,                  // Don't filter by row groups
                 null                   // порядок сортировки
-        );
+        );*/
+
+        Cursor cursor = provider.query(Student.CONTENT_URI, projection,null,null,null);
 
         try {
             arr.add("Таблица содержит " + cursor.getCount() + " гостей");
