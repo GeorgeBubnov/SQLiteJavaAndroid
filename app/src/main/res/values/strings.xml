@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bubnov 3 2</string>
+
+    <string name="buttonAdd">Add item</string>
+
+    <string name="lastName">Last Name</string>
+    <string name="firstName">First Name</string>
+    <string name="middleName">Middle Name</string>
+    <string name="average">Average</string>
+    <string name="buttonSave">Save item</string>
+
+    <string name="toastSuccess">The entry has been added successfully!</string>
+    <string name="toastError">Mistake! The input field is empty</string>
+
+    <string name="notiTitle">Added item</string>
+    <string name="notiText">Total number of items:</string>
+    <string name="notiVar">Last added average is equal to</string>
+
+    <string name="invalid_query_uri">Invalid query Uri</string>
+    <string name="insert_failed">Insert failed</string>
+    <string name="invalid_insert_uri">Invalid insert Uri</string>
+    <string name="invalid_update_uri">Invalid update Uri</string>
+    <string name="invalid_delete_uri">Invalid delete Uri</string>
+</resources>

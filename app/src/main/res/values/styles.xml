@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/first</item>
+        <item name="hintTextColor">@color/second</item>
+        <item name="android:textColor">@color/third</item>
+        <item name="android:textColorHint">@color/second</item>
+        <item name="android:textColorHighlight">@color/second</item>
+    </style>
+    <style name="TextView">
+        <item name="android:textColor">@color/first</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>
