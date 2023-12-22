@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Бубнов 3 2</string>
+    <string name="app_name">Бубнов 4 2</string>
 
-    <string name="buttonAdd">Добавить элемент</string>
-    <string name="buttonUpdate">Изменить элемент</string>
-    <string name="buttonDelete">Удалить элемент</string>
+    <string name="buttonView">Список</string>
+    <string name="buttonAdd">Добавить</string>
+    <string name="buttonUpdate">Изменить</string>
+    <string name="buttonDelete">Удалить</string>
 
     <string name="lastName">Фамилия</string>
     <string name="firstName">Имя</string>
     <string name="middleName">Отчество</string>
     <string name="average">Средняя успеваемость за семестр</string>
-    <string name="buttonSave">Сохранить элемент</string>
+    <string name="buttonSave">Применить</string>
 
     <string name="toastSuccess">Элемент успешно добавлен!</string>
     <string name="toastError">Ошибка! Поле ввода пустое</string>

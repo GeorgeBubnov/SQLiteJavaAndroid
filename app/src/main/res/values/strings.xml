@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bubnov 3 2</string>
+    <string name="app_name">Bubnov 4 2</string>
 
-    <string name="buttonAdd">Add item</string>
-    <string name="buttonUpdate">Update item</string>
-    <string name="buttonDelete">Delete item</string>
+    <string name="buttonView">List</string>
+    <string name="buttonAdd">Add</string>
+    <string name="buttonUpdate">Update</string>
+    <string name="buttonDelete">Delete</string>
 
     <string name="lastName">Last Name</string>
     <string name="firstName">First Name</string>
     <string name="middleName">Middle Name</string>
     <string name="average">Average</string>
-    <string name="buttonSave">Save item</string>
+    <string name="buttonSave">Apply</string>
 
     <string name="toastSuccess">The entry has been added successfully!</string>
     <string name="toastError">Mistake! The input field is empty</string>

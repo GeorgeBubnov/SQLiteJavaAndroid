@@ -4,42 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <androidx.fragment.app.FragmentContainerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
-        android:orientation="vertical" >
-        <ListView
-            android:id="@+id/listView"
-            style="@style/TextView"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
-    </LinearLayout>
+        android:layout_weight="12"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
+        <Button
+            android:id="@+id/buttonView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/first"
+            android:text="@string/buttonView" />
+
         <Button
             android:id="@+id/buttonAdd"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/first"
             android:text="@string/buttonAdd" />
 
         <Button
             android:id="@+id/buttonUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/first"
             android:text="@string/buttonUpdate" />
 
         <Button
             android:id="@+id/buttonDelete"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:backgroundTint="@color/first"
             android:text="@string/buttonDelete" />
     </LinearLayout>

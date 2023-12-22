@@ -1,6 +1,6 @@
-package com.bubnov.lab3;
+package com.bubnov.lab4;
 
-import static com.bubnov.lab3.MainActivity.provider;
+import static com.bubnov.lab4.MainActivity.provider;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import com.bubnov.lab3.database.DatabaseDescription;
+import com.bubnov.lab4.database.DatabaseDescription;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class ThirdActivity extends AppCompatActivity {
+public class ThirdFragment extends Fragment {
     private TextInputEditText id;
     private TextInputEditText lastName;
     private TextInputEditText firstName;
@@ -22,22 +22,30 @@ public class ThirdActivity extends AppCompatActivity {
     private TextInputEditText average;
     private Button buttonSave;
 
+    public ThirdFragment(){
+        super(R.layout.fragment_third);
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_third);
-        id = findViewById(R.id.idtext);
-        lastName = findViewById(R.id.lastName);
-        firstName = findViewById(R.id.firstName);
-        middleName = findViewById(R.id.middleName);
-        average = findViewById(R.id.average);
-        buttonSave = findViewById(R.id.buttonAdd);
+        id = view.findViewById(R.id.idtext);
+        lastName = view.findViewById(R.id.lastName);
+        firstName = view.findViewById(R.id.firstName);
+        middleName = view.findViewById(R.id.middleName);
+        average = view.findViewById(R.id.average);
+        buttonSave = view.findViewById(R.id.buttonAdd);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sid = id.getText().toString();
+                long iid = 0;
                 if(!sid.isEmpty()) {
-                    long iid = Integer.parseInt(sid);
+                    try {
+                        iid = Integer.parseInt(sid);
+                    } catch (final NumberFormatException e) {
+                        Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     String lastNameText = lastName.getText().toString();
                     String firstNameText = firstName.getText().toString();
@@ -61,18 +69,17 @@ public class ThirdActivity extends AppCompatActivity {
                     try {
                         if (cursor.getCount() > 0 && !lastNameText.isEmpty() && !firstNameText.isEmpty() && !middleNameText.isEmpty() && !averageText.isEmpty()) {
                             int xint = provider.update(DatabaseDescription.Student.buildContactUri(iid),values,null,null);
-                            Toast.makeText(getApplicationContext(), R.string.toastSuccess, Toast.LENGTH_SHORT).show();
-                            finish();
+                            Toast.makeText(getActivity().getApplicationContext(), R.string.toastSuccess, Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
                         }
                     } finally {
                         cursor.close();
                     }
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
                 }
             }
         });

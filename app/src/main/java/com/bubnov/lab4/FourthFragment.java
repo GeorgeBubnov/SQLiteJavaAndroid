@@ -1,36 +1,43 @@
-package com.bubnov.lab3;
+package com.bubnov.lab4;
 
-import static com.bubnov.lab3.MainActivity.provider;
+import static com.bubnov.lab4.MainActivity.provider;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.bubnov.lab3.database.DatabaseDescription;
+import com.bubnov.lab4.database.DatabaseDescription;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class FourthActivity extends AppCompatActivity {
+public class FourthFragment extends Fragment {
     private TextInputEditText id;
     private Button buttonSave;
 
+    public FourthFragment(){
+        super(R.layout.fragment_fourth);
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fourth);
-        id = findViewById(R.id.idtext);
-        buttonSave = findViewById(R.id.buttonAdd);
+        id = view.findViewById(R.id.idtext);
+        buttonSave = view.findViewById(R.id.buttonAdd);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sid = id.getText().toString();
+                long iid = 0;
                 if(!sid.isEmpty()) {
-                    long iid = Integer.parseInt(sid);
+                    try {
+                        iid = Integer.parseInt(sid);
+                    } catch (final NumberFormatException e) {
+                        Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     String[] projection = {
                             DatabaseDescription.Student._ID
@@ -43,18 +50,17 @@ public class FourthActivity extends AppCompatActivity {
                     try {
                         if (cursor.getCount() > 0) {
                             int xint = provider.delete(DatabaseDescription.Student.buildContactUri(iid),null,null);
-                            Toast.makeText(getApplicationContext(), R.string.toastSuccess, Toast.LENGTH_SHORT).show();
-                            finish();
+                            Toast.makeText(getActivity().getApplicationContext(), R.string.toastSuccess, Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            Toast.makeText(getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
                         }
                     } finally {
                         cursor.close();
                     }
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
                 }
             }
         });
