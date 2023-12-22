@@ -1,4 +1,4 @@
-package com.bubnov.lab4.database;
+package com.bubnov.lab5.database;
 
 import android.content.ContentUris;
 import android.net.Uri;

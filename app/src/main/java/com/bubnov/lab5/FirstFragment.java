@@ -1,10 +1,10 @@
-package com.bubnov.lab4;
+package com.bubnov.lab5;
 
-import static com.bubnov.lab4.MainActivity.CHANNEL_ID;
-import static com.bubnov.lab4.MainActivity.NOTIFICATION_ID;
-import static com.bubnov.lab4.MainActivity.arr;
-import static com.bubnov.lab4.MainActivity.last;
-import static com.bubnov.lab4.MainActivity.provider;
+import static com.bubnov.lab5.MainActivity.CHANNEL_ID;
+import static com.bubnov.lab5.MainActivity.NOTIFICATION_ID;
+import static com.bubnov.lab5.MainActivity.arr;
+import static com.bubnov.lab5.MainActivity.last;
+import static com.bubnov.lab5.MainActivity.provider;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -16,20 +16,13 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.bubnov.lab4.MainActivity;
-import com.bubnov.lab4.R;
-import com.bubnov.lab4.database.DatabaseDescription;
+import com.bubnov.lab5.database.DatabaseDescription;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class FirstFragment extends Fragment {
 

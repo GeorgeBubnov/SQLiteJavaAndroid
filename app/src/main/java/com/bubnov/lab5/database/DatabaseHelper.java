@@ -1,10 +1,10 @@
-package com.bubnov.lab4.database;
+package com.bubnov.lab5.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.bubnov.lab4.database.DatabaseDescription.Student;
+import com.bubnov.lab5.database.DatabaseDescription.Student;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "NoteBook.db";

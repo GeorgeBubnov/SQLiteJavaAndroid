@@ -1,17 +1,15 @@
-package com.bubnov.lab4;
+package com.bubnov.lab5;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.bubnov.lab4.database.DatabaseContentProvider;
-import com.bubnov.lab4.database.DatabaseDescription.*;
-import com.bubnov.lab4.database.DatabaseHelper;
+import com.bubnov.lab5.database.DatabaseContentProvider;
+import com.bubnov.lab5.database.DatabaseHelper;
 
 import java.util.ArrayList;
 

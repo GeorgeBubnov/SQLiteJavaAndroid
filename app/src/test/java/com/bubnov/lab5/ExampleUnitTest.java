@@ -1,4 +1,4 @@
-package com.bubnov.lab4;
+package com.bubnov.lab5;
 
 import org.junit.Test;
 

@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.bubnov.lab4"
+    namespace = "com.bubnov.lab5"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.bubnov.lab4"
+        applicationId = "com.bubnov.lab5"
         minSdk = 21
         targetSdk = 34
         versionCode = 1

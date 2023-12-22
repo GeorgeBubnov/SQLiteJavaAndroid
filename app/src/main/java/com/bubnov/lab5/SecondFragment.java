@@ -1,6 +1,6 @@
-package com.bubnov.lab4;
+package com.bubnov.lab5;
 
-import static com.bubnov.lab4.MainActivity.provider;
+import static com.bubnov.lab5.MainActivity.provider;
 
 import androidx.fragment.app.Fragment;
 
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.bubnov.lab4.database.DatabaseDescription;
+import com.bubnov.lab5.database.DatabaseDescription;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SecondFragment extends Fragment {
