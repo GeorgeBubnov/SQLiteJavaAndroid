@@ -19,7 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:gravity="center"
         android:orientation="vertical" >
         <Button
@@ -28,6 +28,20 @@
             android:layout_height="50dp"
             android:backgroundTint="@color/first"
             android:text="@string/buttonAdd" />
+
+        <Button
+            android:id="@+id/buttonUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/first"
+            android:text="@string/buttonUpdate" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/first"
+            android:text="@string/buttonDelete" />
     </LinearLayout>
 
 </LinearLayout>

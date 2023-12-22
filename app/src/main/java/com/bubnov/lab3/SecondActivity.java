@@ -45,16 +45,13 @@ public class SecondActivity extends AppCompatActivity {
                 values.put(DatabaseDescription.Student.COLUMN_AVERAGE, averageText);
 
                 if (!lastNameText.isEmpty() && !firstNameText.isEmpty() && !middleNameText.isEmpty() && !averageText.isEmpty()) {
-                    Uri xynya = provider.insert(DatabaseDescription.Student.CONTENT_URI,values);
+                    Uri xuri = provider.insert(DatabaseDescription.Student.CONTENT_URI,values);
                     MainActivity.last = averageText;
                     Toast.makeText(getApplicationContext(), R.string.toastSuccess, Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     Toast.makeText(getApplicationContext(), getResources().getText(R.string.toastError), Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
     }

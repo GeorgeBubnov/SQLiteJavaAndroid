@@ -2,18 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
+        android:gravity="center"
         android:orientation="vertical" >
-        <ListView
-            android:id="@+id/listView"
-            style="@style/TextView"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInput"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idtext"
+                style="@style/TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/id"
+                android:inputType="textCapSentences" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -27,21 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:backgroundTint="@color/first"
-            android:text="@string/buttonAdd" />
-
-        <Button
-            android:id="@+id/buttonUpdate"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/first"
-            android:text="@string/buttonUpdate" />
-
-        <Button
-            android:id="@+id/buttonDelete"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/first"
-            android:text="@string/buttonDelete" />
+            android:text="@string/buttonSave" />
     </LinearLayout>
-
 </LinearLayout>

@@ -3,6 +3,8 @@
     <string name="app_name">Бубнов 3 2</string>
 
     <string name="buttonAdd">Добавить элемент</string>
+    <string name="buttonUpdate">Изменить элемент</string>
+    <string name="buttonDelete">Удалить элемент</string>
 
     <string name="lastName">Фамилия</string>
     <string name="firstName">Имя</string>
@@ -22,4 +24,5 @@
     <string name="invalid_insert_uri">Недействительный Uri</string>
     <string name="invalid_update_uri">Недействительный обновление Uri</string>
     <string name="invalid_delete_uri">Недействительный удаление Uri</string>
+    <string name="id">ID</string>
 </resources>

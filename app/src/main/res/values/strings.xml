@@ -3,6 +3,8 @@
     <string name="app_name">Bubnov 3 2</string>
 
     <string name="buttonAdd">Add item</string>
+    <string name="buttonUpdate">Update item</string>
+    <string name="buttonDelete">Delete item</string>
 
     <string name="lastName">Last Name</string>
     <string name="firstName">First Name</string>
@@ -22,4 +24,5 @@
     <string name="invalid_insert_uri">Invalid insert Uri</string>
     <string name="invalid_update_uri">Invalid update Uri</string>
     <string name="invalid_delete_uri">Invalid delete Uri</string>
+    <string name="id">ID</string>
 </resources>
