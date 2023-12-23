@@ -20,6 +20,8 @@ public class ThirdFragment extends Fragment {
     private TextInputEditText firstName;
     private TextInputEditText middleName;
     private TextInputEditText average;
+    private TextInputEditText attendance;
+    private TextInputEditText email;
     private Button buttonSave;
 
     public ThirdFragment(){
@@ -33,6 +35,8 @@ public class ThirdFragment extends Fragment {
         firstName = view.findViewById(R.id.firstName);
         middleName = view.findViewById(R.id.middleName);
         average = view.findViewById(R.id.average);
+        attendance = view.findViewById(R.id.attendance);
+        email = view.findViewById(R.id.email);
         buttonSave = view.findViewById(R.id.buttonAdd);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,12 +55,16 @@ public class ThirdFragment extends Fragment {
                     String firstNameText = firstName.getText().toString();
                     String middleNameText = middleName.getText().toString();
                     String averageText = average.getText().toString();
+                    String attendanceText = attendance.getText().toString();
+                    String emailText = email.getText().toString();
 
                     ContentValues values = new ContentValues();
                     values.put(DatabaseDescription.Student.COLUMN_LASTNAME, lastNameText);
                     values.put(DatabaseDescription.Student.COLUMN_FIRSTNAME, firstNameText);
                     values.put(DatabaseDescription.Student.COLUMN_MIDDLENAME, middleNameText);
                     values.put(DatabaseDescription.Student.COLUMN_AVERAGE, averageText);
+                    values.put(DatabaseDescription.Student.COLUMN_ATTENDANCE, attendanceText);
+                    values.put(DatabaseDescription.Student.COLUMN_EMAIL, emailText);
 
                     String[] projection = {
                             DatabaseDescription.Student._ID

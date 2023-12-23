@@ -14,6 +14,8 @@ public class DatabaseDescription {
         public static final String COLUMN_FIRSTNAME = "firstname";
         public static final String COLUMN_MIDDLENAME = "middlename";
         public static final String COLUMN_AVERAGE = "average";
+        public static final String COLUMN_ATTENDANCE = "attendance";
+        public static final String COLUMN_EMAIL = "email";
         public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(TABLE_NAME).build();
 
         public static Uri buildContactUri(long id) {

@@ -69,7 +69,9 @@ public class FirstFragment extends Fragment {
                 DatabaseDescription.Student.COLUMN_LASTNAME,
                 DatabaseDescription.Student.COLUMN_FIRSTNAME,
                 DatabaseDescription.Student.COLUMN_MIDDLENAME,
-                DatabaseDescription.Student.COLUMN_AVERAGE
+                DatabaseDescription.Student.COLUMN_AVERAGE,
+                DatabaseDescription.Student.COLUMN_ATTENDANCE,
+                DatabaseDescription.Student.COLUMN_EMAIL
         };
         Cursor cursor = provider.query(DatabaseDescription.Student.CONTENT_URI, projection,null,null,null);
         try {
@@ -77,7 +79,9 @@ public class FirstFragment extends Fragment {
                     DatabaseDescription.Student.COLUMN_FIRSTNAME + " - " +
                     DatabaseDescription.Student.COLUMN_LASTNAME + " - " +
                     DatabaseDescription.Student.COLUMN_MIDDLENAME + " - " +
-                    DatabaseDescription.Student.COLUMN_AVERAGE
+                    DatabaseDescription.Student.COLUMN_AVERAGE + " - " +
+                    DatabaseDescription.Student.COLUMN_ATTENDANCE + " - " +
+                    DatabaseDescription.Student.COLUMN_EMAIL
             );
 
             int idColumnIndex = cursor.getColumnIndex(DatabaseDescription.Student._ID);
@@ -85,6 +89,8 @@ public class FirstFragment extends Fragment {
             int fnColumnIndex = cursor.getColumnIndex(DatabaseDescription.Student.COLUMN_FIRSTNAME);
             int mnColumnIndex = cursor.getColumnIndex(DatabaseDescription.Student.COLUMN_MIDDLENAME);
             int avColumnIndex = cursor.getColumnIndex(DatabaseDescription.Student.COLUMN_AVERAGE);
+            int atColumnIndex = cursor.getColumnIndex(DatabaseDescription.Student.COLUMN_ATTENDANCE);
+            int emColumnIndex = cursor.getColumnIndex(DatabaseDescription.Student.COLUMN_EMAIL);
 
             while (cursor.moveToNext()) {
                 int currentID = cursor.getInt(idColumnIndex);
@@ -92,11 +98,15 @@ public class FirstFragment extends Fragment {
                 String currentFN = cursor.getString(fnColumnIndex);
                 String currentMN = cursor.getString(mnColumnIndex);
                 String currentAV = cursor.getString(avColumnIndex);
+                String currentAT = cursor.getString(atColumnIndex);
+                String currentEM = cursor.getString(emColumnIndex);
                 arr.add((currentID + " - " +
                         currentLN + " - " +
                         currentFN + " - " +
                         currentMN + " - " +
-                        currentAV));
+                        currentAV + " - " +
+                        currentAT + " - " +
+                        currentEM));
             }
         } finally {
             cursor.close();

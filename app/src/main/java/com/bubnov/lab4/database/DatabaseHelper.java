@@ -21,11 +21,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         Student.COLUMN_LASTNAME + " TEXT, " +
                         Student.COLUMN_FIRSTNAME + " TEXT, " +
                         Student.COLUMN_MIDDLENAME + " TEXT, " +
-                        Student.COLUMN_AVERAGE + " TEXT);";
+                        Student.COLUMN_AVERAGE + " TEXT, " +
+                        Student.COLUMN_ATTENDANCE + " TEXT, " +
+                        Student.COLUMN_EMAIL + " TEXT);";
         db.execSQL(CREATE_STUDENTS_TABLE);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + Student.TABLE_NAME);
+        onCreate(db);
+    }
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + Student.TABLE_NAME);
         onCreate(db);
     }
